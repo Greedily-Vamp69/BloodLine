@@ -332,11 +332,10 @@ function displayResult(key, updateUrl = false) {
 function renderLineageGrid() {
   if (lineageGrid.children.length) return;
   Object.entries(bloodlines).forEach(([key, bloodline], index) => {
-    const button = document.createElement("button");
-    button.className = "lineage-card";
-    button.type = "button";
-    button.style.setProperty("--lineage-accent", bloodline.color);
-    button.innerHTML = `
+    const card = document.createElement("article");
+    card.className = `lineage-card${key === "shiso" ? " is-hidden-origin" : ""}`;
+    card.style.setProperty("--lineage-accent", bloodline.color);
+    card.innerHTML = `
       <span class="lineage-card-number">${String(index + 1).padStart(2, "0")}</span>
       <img src="${bloodline.image}" alt="" loading="lazy">
       <span class="lineage-card-copy">
@@ -344,8 +343,7 @@ function renderLineageGrid() {
         <small>${bloodline.reading}</small>
       </span>
     `;
-    button.addEventListener("click", () => displayResult(key, true));
-    lineageGrid.append(button);
+    lineageGrid.append(card);
   });
 }
 
@@ -368,10 +366,9 @@ function resetQuiz() {
 
 function shareResult() {
   const result = bloodlines[currentResult];
-  const shareUrl = new URL(window.location.href);
-  shareUrl.searchParams.set("result", currentResult);
+  const shareUrl = `https://greedily-vamp69.github.io/BloodLine/results/${currentResult}/`;
   const text = `私に流れる吸血鬼の血族は「${result.name}」でした。\n\nあなたの夜に流れる血は、どの血族のもの？\n#吸血鬼の血族診断 #BloodLine`;
-  window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(shareUrl.toString())}`, "_blank", "noopener,noreferrer");
+  window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(shareUrl)}`, "_blank", "noopener,noreferrer");
 }
 
 startButton.addEventListener("click", () => {
