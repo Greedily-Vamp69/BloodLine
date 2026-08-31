@@ -11,7 +11,7 @@ const root = "https://greedily-vamp69.github.io/BloodLine";
 for (const [key, [name, reading]] of Object.entries(bloodlines)) {
   const url = `${root}/results/${key}/`;
   const image = `${root}/assets/characters/${key}.webp`;
-  const description = `私に流れる吸血鬼の血族は「${name}」でした。あなたの血族も鑑定してみませんか？`;
+  const description = `私の中に眠る血族は「${name}」でした。あなたに流れる夜の血は、どの血族のもの？`;
   const html = `<!doctype html>
 <html lang="ja"><head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">

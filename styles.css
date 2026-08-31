@@ -195,6 +195,22 @@ h1 span {
   cursor: pointer;
 }
 .back-button:disabled { opacity: .25; cursor: default; }
+.lineage-back-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  width: 82px;
+  height: 42px;
+  color: #f3e9df;
+  border-color: rgba(201,169,106,.55);
+  border-radius: 4px;
+  background: rgba(30,18,23,.92);
+  box-shadow: 0 7px 22px rgba(0,0,0,.42), inset 0 0 0 1px rgba(255,255,255,.025);
+  font-size: .76rem;
+  letter-spacing: .1em;
+}
+.lineage-back-button:hover { color: #fff; border-color: var(--gold); background: rgba(74,19,32,.9); }
 .progress-label { margin: 0; color: var(--muted); text-align: center; letter-spacing: .13em; }
 .progress-label span:first-child { color: var(--text); font-size: 1.35rem; }
 .progress-track { height: 2px; margin: 18px 0 56px; overflow: hidden; background: rgba(255,255,255,.08); }
@@ -308,7 +324,7 @@ h1 span {
 footer { display: flex; justify-content: center; gap: 12px; margin-top: 54px; color: #625a5d; font-size: .68rem; letter-spacing: .12em; }
 
 .lineage-screen { max-width: 1040px; margin: auto; padding: 28px 0 46px; }
-.lineage-header { display: grid; grid-template-columns: 52px 1fr 52px; align-items: center; text-align: center; }
+.lineage-header { display: grid; grid-template-columns: 88px 1fr 88px; align-items: center; text-align: center; }
 .lineage-header h2 { margin: 6px 0 0; font-size: clamp(2rem, 5vw, 3.4rem); letter-spacing: .16em; }
 .lineage-intro, .lineage-note { color: var(--muted); text-align: center; font-size: .82rem; line-height: 1.8; }
 .lineage-intro { margin: 18px 0 30px; }
@@ -332,10 +348,14 @@ footer { display: flex; justify-content: center; gap: 12px; margin-top: 54px; co
   color: var(--text);
   border: 1px solid rgba(255,255,255,.06);
   background: #090709;
-  cursor: default;
+  cursor: pointer;
+  transition: transform .22s, border-color .22s, filter .22s;
 }
 .lineage-card:nth-child(n+6) { background: #050405; }
+.lineage-card:not(.is-hidden-origin):hover { z-index: 2; border-color: color-mix(in srgb, var(--lineage-accent) 70%, var(--gold)); filter: brightness(1.14); transform: translateY(-5px) scale(1.018); }
+.lineage-card:not(.is-hidden-origin):focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
 .lineage-card img { width: 100%; height: 100%; object-fit: cover; object-position: 18% center; filter: saturate(.82) brightness(.76); transform: scale(1.48); transform-origin: 17% 50%; }
+.lineage-card.is-hidden-origin { cursor: not-allowed; }
 .lineage-card.is-hidden-origin img { filter: brightness(0) opacity(.72); }
 .lineage-card.is-hidden-origin::before { content: "?"; position: absolute; top: 43%; left: 50%; z-index: 2; color: rgba(201,169,106,.28); font: 400 clamp(2.5rem, 5vw, 4.5rem)/1 Georgia, serif; transform: translate(-50%, -50%); text-shadow: 0 0 28px rgba(201,169,106,.22); }
 .lineage-card.is-hidden-origin .lineage-card-copy small { color: #776f72; }
@@ -372,7 +392,8 @@ noscript { position: fixed; inset: auto 12px 12px; padding: 12px; color: white; 
   .invitation-grid { grid-template-columns: 1fr; }
   .invitation-card { min-height: 150px; }
   .lineage-screen { padding-top: 16px; }
-  .lineage-header { grid-template-columns: 44px 1fr 44px; }
+  .lineage-header { grid-template-columns: 76px 1fr 76px; }
+  .lineage-back-button { width: 72px; height: 40px; font-size: .7rem; }
   .lineage-intro { margin-bottom: 22px; padding-inline: 12px; }
   .lineage-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 7px; padding: 7px; }
   .lineage-card { aspect-ratio: .82; }
