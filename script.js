@@ -372,7 +372,7 @@ function resetQuiz() {
 
 function shareResult() {
   const result = bloodlines[currentResult];
-  const shareUrl = `https://greedily-vamp69.github.io/BloodLine/results/${currentResult}/`;
+  const shareUrl = `https://greedily-vamp69.github.io/BloodLine/results/${currentResult}/?card=2`;
   const text = `私の中に眠る血族は「${result.name}」でした。\n\nあなたに流れる夜の血は、どの血族のもの？\n#私に眠る血族診断 #ヴァンパイアの日`;
   window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(shareUrl)}`, "_blank", "noopener,noreferrer");
 }

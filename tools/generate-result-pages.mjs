@@ -10,7 +10,7 @@ const root = "https://greedily-vamp69.github.io/BloodLine";
 
 for (const [key, [name, reading]] of Object.entries(bloodlines)) {
   const url = `${root}/results/${key}/`;
-  const image = `${root}/assets/characters/${key}.webp`;
+  const image = `${root}/assets/social/${key}.jpg`;
   const description = `私の中に眠る血族は「${name}」でした。あなたに流れる夜の血は、どの血族のもの？`;
   const html = `<!doctype html>
 <html lang="ja"><head>
@@ -18,12 +18,14 @@ for (const [key, [name, reading]] of Object.entries(bloodlines)) {
   <title>吸血鬼の血族診断 | ${name}</title><meta name="description" content="${description}">
   <meta property="og:type" content="website"><meta property="og:url" content="${url}">
   <meta property="og:title" content="吸血鬼の血族診断 | ${name}"><meta property="og:description" content="${description}">
-  <meta property="og:image" content="${image}"><meta property="og:image:width" content="1680"><meta property="og:image:height" content="945">
+  <meta property="og:image" content="${image}"><meta property="og:image:secure_url" content="${image}">
+  <meta property="og:image:type" content="image/jpeg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="675">
   <meta property="og:image:alt" content="吸血鬼の血族「${name}（${reading}）」の紙人形">
   <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="吸血鬼の血族診断 | ${name}">
   <meta name="twitter:description" content="${description}"><meta name="twitter:image" content="${image}">
-  <meta http-equiv="refresh" content="0; url=../../?result=${key}"><script>location.replace("../../?result=${key}");<\/script>
-</head><body><p><a href="../../?result=${key}">「${name}」の鑑定結果を見る</a></p></body></html>
+  <meta name="twitter:image:alt" content="吸血鬼の血族「${name}（${reading}）」の紙人形">
+  <script>location.replace("../../");<\/script>
+</head><body><p><a href="../../">吸血鬼の血族診断を始める</a></p></body></html>
 `;
   const directory = new URL(`../results/${key}/`, import.meta.url);
   await mkdir(directory, { recursive: true });
