@@ -1,51 +1,61 @@
 const bloodlines = {
   kojou: {
     name: "古城", reading: "こじょう", symbol: "古", color: "#70433d",
+    image: "assets/characters/kojou.webp",
     caption: "流行に流されるより、自分が本当に良いと思うものを長く大切にするタイプ。落ち着いて見えるけれど、内側には簡単には譲れない強いこだわりがあります。古いものを守るだけでなく、積み重ねられた時間の価値を見抜く人です。",
     habitat: "老舗のお店 / 喫茶店 / バー / 洋館 / 歴史のある街"
   },
   shingetsu: {
     name: "新月", reading: "しんげつ", symbol: "新", color: "#464b88",
+    image: "assets/characters/shingetsu.webp",
     caption: "新しい場所や人、遊びに反応する現代派。誘われたらとりあえず行ってみるし、楽しそうなことへの嗅覚がかなり鋭いタイプです。まだ誰も知らない夜を見つけると、真っ先に足を踏み入れます。",
     habitat: "ライブハウス / イベント / クラブ / 新しくできたお店"
   },
   meitei: {
     name: "酩酊", reading: "めいてい", symbol: "酔", color: "#9f2740",
+    image: "assets/characters/meitei.webp",
     caption: "お酒が好きなのはもちろん、飲みの場そのものが好きなタイプ。楽しい夜にはだいたいいるし、気付けばもう1軒へ向かっています。杯を交わせば、初対面でも今夜の仲間です。",
     habitat: "居酒屋 / バー / 立ち飲み / 友達の飲み会"
   },
   shuushuu: {
     name: "蒐集", reading: "しゅうしゅう", symbol: "蒐", color: "#80613d",
+    image: "assets/characters/shuushuu.webp",
     caption: "好きになったものへの熱量が高く、調べる、集める、眺めるまで全部楽しいタイプ。人から見ればただの物でも、自分にとっては一つひとつに意味があります。あなたの好きは、やがて小さな博物館になります。",
     habitat: "推し活現場 / 古着屋 / 雑貨店 / 展示会 / 自分の部屋"
   },
   eiya: {
     name: "永夜", reading: "えいや", symbol: "夜", color: "#30376d",
+    image: "assets/characters/eiya.webp",
     caption: "夜になるほど元気になるタイプ。騒がしい夜も嫌いではないけれど、深夜特有の静けさや空気そのものをかなり好んでいます。誰もいない道を歩く時間が、あなたを本来の姿へ戻します。",
     habitat: "深夜の街 / コンビニまでの道 / 24時間営業のお店 / 夜の公園"
   },
   kogetsu: {
     name: "孤月", reading: "こげつ", symbol: "孤", color: "#41606b",
+    image: "assets/characters/kogetsu.webp",
     caption: "誰とでも仲良くする必要はないと思っているタイプ。頼られることは多いけれど、自分が本当に頼る相手はかなり限られています。一人で立てる強さと、選んだ相手を深く信じる心を持つ人です。",
     habitat: "一人で落ち着けるお店 / 端の席 / 自宅 / 少人数の集まり"
   },
   hakumei: {
     name: "薄明", reading: "はくめい", symbol: "薄", color: "#80647b",
+    image: "assets/characters/hakumei.webp",
     caption: "少し掴みどころがなく、独特の空気を持っているタイプ。本人は普通にしているつもりでも、なぜか印象に残ります。昼と夜の境目のように、相反するものを静かに同居させています。",
     habitat: "静かなカフェ / 展示会 / 夕方から夜に変わる頃の街"
   },
   kyouen: {
     name: "狂宴", reading: "きょうえん", symbol: "宴", color: "#a33a2e",
+    image: "assets/characters/kyouen.webp",
     caption: "面白そうかどうかがかなり大事なタイプ。多少の無茶でも、後で笑い話になるなら悪くないと思っています。予定通りに終わらない夜ほど、あなたの血は騒ぎ出します。",
     habitat: "フェス / イベント / 飲み会 / 旅行先 / よく分からない集まり"
   },
   kyouji: {
     name: "矜持", reading: "きょうじ", symbol: "矜", color: "#7a5630",
+    image: "assets/characters/kyouji.webp",
     caption: "人に合わせるより、自分が納得できるかを重視するタイプ。服でも仕事でも人間関係でも、自分なりの基準がちゃんとあります。その流儀は頑固さではなく、あなたがあなたでいるための誇りです。",
     habitat: "セレクトショップ / 行きつけのお店 / 自分で選んだ居場所"
   },
   shiso: {
     name: "始祖", reading: "しそ", symbol: "始", color: "#b49558",
+    image: "assets/characters/shiso.webp",
     caption: "どれか1つの型に収まりにくいタイプ。場面によってまるで違う顔を見せるので、周りからすると意外と読めません。複数の血族の気配を宿しながら、どれにも支配されない稀少な存在です。",
     habitat: "どこにでもいる。気付いた時には、もう馴染んでいる"
   }
@@ -173,10 +183,15 @@ const totalNumber = document.querySelector("#total-number");
 const progressBar = document.querySelector("#progress-bar");
 const retryButton = document.querySelector("#retry-button");
 const shareButton = document.querySelector("#share-button");
+const introLineageButton = document.querySelector("#intro-lineage-button");
+const resultLineageButton = document.querySelector("#result-lineage-button");
+const lineageBackButton = document.querySelector("#lineage-back-button");
+const lineageGrid = document.querySelector("#lineage-grid");
 
 let currentQuestion = 0;
 let selectedAnswers = [];
 let currentResult = null;
+let lineageReturnScreen = "intro-screen";
 
 totalNumber.textContent = questions.length;
 
@@ -301,7 +316,7 @@ function displayResult(key, updateUrl = false) {
   document.querySelector("#result-index").textContent = String(keys.indexOf(currentResult) + 1).padStart(2, "0");
   document.querySelector("#result-name").textContent = result.name;
   document.querySelector("#result-reading").textContent = result.reading;
-  document.querySelector("#result-symbol").textContent = result.symbol;
+  document.querySelector("#result-character-image").src = result.image;
   document.querySelector("#result-caption").textContent = result.caption;
   document.querySelector("#result-habitat").textContent = result.habitat;
   document.querySelector("#result-visual").style.setProperty("--accent", result.color);
@@ -312,6 +327,32 @@ function displayResult(key, updateUrl = false) {
     url.searchParams.set("result", currentResult);
     window.history.replaceState({}, "", url);
   }
+}
+
+function renderLineageGrid() {
+  if (lineageGrid.children.length) return;
+  Object.entries(bloodlines).forEach(([key, bloodline], index) => {
+    const button = document.createElement("button");
+    button.className = "lineage-card";
+    button.type = "button";
+    button.style.setProperty("--lineage-accent", bloodline.color);
+    button.innerHTML = `
+      <span class="lineage-card-number">${String(index + 1).padStart(2, "0")}</span>
+      <img src="${bloodline.image}" alt="" loading="lazy">
+      <span class="lineage-card-copy">
+        <strong>${bloodline.name}</strong>
+        <small>${bloodline.reading}</small>
+      </span>
+    `;
+    button.addEventListener("click", () => displayResult(key, true));
+    lineageGrid.append(button);
+  });
+}
+
+function showLineages(fromScreen) {
+  lineageReturnScreen = fromScreen;
+  renderLineageGrid();
+  showScreen("lineage-screen");
 }
 
 function resetQuiz() {
@@ -346,6 +387,9 @@ backButton.addEventListener("click", () => {
 
 retryButton.addEventListener("click", resetQuiz);
 shareButton.addEventListener("click", shareResult);
+introLineageButton.addEventListener("click", () => showLineages("intro-screen"));
+resultLineageButton.addEventListener("click", () => showLineages("result-screen"));
+lineageBackButton.addEventListener("click", () => showScreen(lineageReturnScreen));
 
 const directResult = new URLSearchParams(window.location.search).get("result");
 if (directResult && bloodlines[directResult]) displayResult(directResult);

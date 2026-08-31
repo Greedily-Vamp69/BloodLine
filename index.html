@@ -27,6 +27,7 @@
       <p class="intro-copy">あなたの夜に流れる血は、<br class="mobile-only">どの血族のもの？</p>
       <p class="intro-note">12の問いに答えて、内なる血族を鑑定します。</p>
       <button id="start-button" class="primary-button" type="button">鑑定を始める</button>
+      <button id="intro-lineage-button" class="text-button" type="button">10の血族を見る</button>
       <p class="time-note">所要時間 約2分</p>
     </section>
 
@@ -56,13 +57,14 @@
       <p class="result-lead">あなたの血族は・・・</p>
       <article class="result-card">
         <div id="result-visual" class="result-visual" aria-hidden="true">
-          <div class="moon"></div>
-          <div class="result-sigil"><span id="result-symbol">V</span></div>
+          <img id="result-character-image" class="result-character-image" src="" alt="">
+          <div class="result-name-layer">
+            <p class="result-index">BLOODLINE <span id="result-index">01</span></p>
+            <h2 id="result-name"></h2>
+            <p id="result-reading" class="result-reading"></p>
+          </div>
         </div>
         <div class="result-content">
-          <p class="result-index">BLOODLINE <span id="result-index">01</span></p>
-          <h2 id="result-name"></h2>
-          <p id="result-reading" class="result-reading"></p>
           <p id="result-caption" class="result-caption"></p>
           <div class="habitat-box">
             <p>よくいる場所 / 生息地</p>
@@ -73,9 +75,24 @@
       <div class="result-actions">
         <button id="share-button" class="primary-button share-button" type="button">Xで結果を共有する</button>
         <button id="retry-button" class="secondary-button" type="button">もう一度鑑定する</button>
+        <button id="result-lineage-button" class="text-button" type="button">10の血族を見る</button>
       </div>
       <p class="share-hook">友達の血族も、覗いてみませんか。</p>
       <footer><span>BLOOD LINE</span><span>吸血鬼の血族診断</span></footer>
+    </section>
+
+    <section id="lineage-screen" class="screen lineage-screen" aria-labelledby="lineage-title">
+      <div class="lineage-header">
+        <button id="lineage-back-button" class="back-button" type="button" aria-label="前の画面へ戻る">←</button>
+        <div>
+          <p class="eyebrow">THE TEN BLOODLINES</p>
+          <h2 id="lineage-title">10の血族</h2>
+        </div>
+        <span class="header-spacer" aria-hidden="true"></span>
+      </div>
+      <p class="lineage-intro">夜を分かつ10の血。気になる紙人形を選ぶと、血族の記録を閲覧できます。</p>
+      <div id="lineage-grid" class="lineage-grid" aria-label="血族一覧"></div>
+      <p class="lineage-note">始祖は、いずれの血にも染まりきらない者だけが辿り着く隠された血族です。</p>
     </section>
   </main>
 
