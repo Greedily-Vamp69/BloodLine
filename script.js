@@ -309,7 +309,7 @@ function beginAnalysis() {
   }, 1900);
 }
 
-function displayResult(key, updateUrl = false) {
+function displayResult(key, updateUrl = false, fromLineage = false) {
   const result = bloodlines[key] || bloodlines.kojou;
   const keys = Object.keys(bloodlines);
   currentResult = key in bloodlines ? key : "kojou";
@@ -320,6 +320,7 @@ function displayResult(key, updateUrl = false) {
   document.querySelector("#result-caption").textContent = result.caption;
   document.querySelector("#result-habitat").textContent = result.habitat;
   document.querySelector("#result-visual").style.setProperty("--accent", result.color);
+  shareButton.hidden = fromLineage;
   showScreen("result-screen");
 
   if (updateUrl) {
@@ -347,7 +348,7 @@ function renderLineageGrid() {
         <small>${bloodline.reading}</small>
       </span>
     `;
-    if (key !== "shiso") card.addEventListener("click", () => displayResult(key, true));
+    if (key !== "shiso") card.addEventListener("click", () => displayResult(key, true, true));
     lineageGrid.append(card);
   });
 }
