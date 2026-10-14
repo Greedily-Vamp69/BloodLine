@@ -58,7 +58,7 @@ for(let id=1;id<=8;id++){
  const card=document.createElement('button');card.type='button';card.className='card';
  const art=document.createElement('div');art.className='cardArt';const img=new Image();img.src=`https://zombie-movie-quiz.rainy-vmp.chatgpt.site/images/type-${id}.png`;img.alt=types[id].name;img.loading='lazy';art.append(img);
  const label=document.createElement('span');label.className='cardLabel';const num=document.createElement('span');num.className='cardNumber';num.textContent=String(id).padStart(2,'0');label.append(num,document.createTextNode(types[id].name));card.append(art,label);
- card.onclick=()=>{$('dialogTitle').textContent=types[id].name;$('dialogBody').textContent=types[id].body;$('dialogImage').src=`images/type-${id}.png`;$('dialogImage').alt=types[id].name;$('characterDialog').showModal();};$('catalogGrid').append(card);
+ card.onclick=()=>{$('dialogTitle').textContent=types[id].name;$('dialogBody').textContent=types[id].body;$('dialogImage').src=`https://zombie-movie-quiz.rainy-vmp.chatgpt.site/images/type-${id}.png`;$('dialogImage').alt=types[id].name;$('characterDialog').showModal();};$('catalogGrid').append(card);
 }
 $('closeDialog').onclick=()=>$('characterDialog').close();
 $('characterDialog').addEventListener('click',e=>{if(e.target===$('characterDialog')){const r=e.target.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)e.target.close();}});
